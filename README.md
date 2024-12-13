@@ -28,10 +28,19 @@ You can learn more about installing and configuring Netdata [here.](https://lear
 
 You can follow the above steps manually to get the understanding of the project. Once you have a working setup, create a few shell scripts to automate the setup and test the monitoring dashboard.
 
-- setup.sh: A shell script to install Netdata on a new system.
-- test_dashboard.sh: Script to put some load on the system and test the monitoring dashboard.
-- cleanup.sh: Script to clean up the system and remove the Netdata agent.
+- `setup.sh`: A shell script to install Netdata on a new system.
+- `test_dashboard.sh`: Script to put some load on the system and test the monitoring dashboard.
+- `cleanup.sh`: Script to clean up the system and remove the Netdata agent.
 
 The goal with this automation is to slowly get accustomed to DevOps practices and CI/CD pipelines.
 
 Once you have finished this project, you will have a basic understanding of how to set up a monitoring dashboard and how to automate the setup and testing processes. We will revisit the topic of monitoring and look at more advanced tools and techniques in later projects.
+
+## Notes 
+
+- Adding a `trigger.sh` script to spike some resources for alerts 
+- Going to use terraform to build droplet 
+- Going to use GitHub Actions to do all the initial setup
+- Can then SSH in from there to run trigger or customize etc. 
+
+## Lessons Learned
