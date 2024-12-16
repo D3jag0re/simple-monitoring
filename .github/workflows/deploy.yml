@@ -84,6 +84,7 @@ jobs:
 
     - name: Debug SSH key
       run: |
+        cat ~/.ssh/id_rsa
         ssh-keygen -lf ~/.ssh/id_rsa
       
 
