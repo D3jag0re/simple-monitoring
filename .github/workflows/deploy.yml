@@ -82,6 +82,11 @@ jobs:
         echo "${{ secrets.DO_SSH_PRIVATE_KEY}}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
 
+    - name: Debug SSH key
+      run: |
+        ssh-keygen -lf ~/.ssh/id_rsa
+      
+
     - name: Copy Files to VM
       run: |
         scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ./scripts root@${{ needs.build_droplet.outputs.ipv4 }}:/tmp   
