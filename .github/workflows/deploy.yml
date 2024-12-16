@@ -76,9 +76,15 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
+    - name: Setup SSH Key
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.DO_SSH_PRIVATE_KEY}}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+
     - name: Copy Files to VM
       run: |
-        scp -o StrictHostKeyChecking=no -i ${{ secrets.DO_SSH_PUBLIC_KEY }} -r ./scripts root@${{ needs.build_droplet.outputs.ipv4 }}:/tmp   
+        scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ./scripts root@${{ needs.build_droplet.outputs.ipv4 }}:/tmp   
 
     - name: Execute Commands on VM
       run: | 
