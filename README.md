@@ -44,3 +44,6 @@ Once you have finished this project, you will have a basic understanding of how 
 - Can then SSH in from there to run trigger or customize etc. 
 
 ## Lessons Learned
+
+- Getting the SSH Key from GH Secret to a file to be used by scp was difficult, therefore:
+- Used appleboy/scp-action to achieve this (have used appleboy/ssh_action in the past.)

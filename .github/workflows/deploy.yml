@@ -76,21 +76,14 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Setup SSH Key
-      run: |
-        mkdir -p ~/.ssh
-        echo "${{ secrets.DO_SSH_PRIVATE_KEY}}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-
-    - name: Debug SSH key
-      run: |
-        cat ~/.ssh/id_rsa
-        ssh-keygen -lf ~/.ssh/id_rsa
-      
-
-    - name: Copy Files to VM
-      run: |
-        scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ./scripts root@${{ needs.build_droplet.outputs.ipv4 }}:/tmp   
+    - name: copy file via ssh key
+      uses: appleboy/scp-action@v0.1.7
+      with:
+        host: ${{ needs.build_droplet.outputs.ipv4 }}
+        username: root
+        key: ${{ secrets.DO_SSH_PRIVATE_KEY }}
+        source: "./scripts"
+        target: /temp
 
     - name: Execute Commands on VM
       run: | 
