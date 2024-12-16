@@ -2,7 +2,7 @@
 
 This is based off the DevOps Roadmap Project [Simple Monitoring](https://roadmap.sh/projects/simple-monitoring-dashboard)
 
-Set up a basic monitoring dashboard using Netdata. 
+Set up a basic monitoring dashboard using [Netdata.](https://www.netdata.cloud/) 
 
 This is number 8 of [21 DevOps Projects](https://roadmap.sh/devops/projects) as per roadmap.sh
 
@@ -38,7 +38,6 @@ Once you have finished this project, you will have a basic understanding of how 
 
 ## Notes 
 
-- Adding a `trigger.sh` script to spike some resources for alerts 
 - Going to use terraform to build droplet 
 - Going to use GitHub Actions to do all the initial setup
 - Can then SSH in from there to run trigger or customize etc. 

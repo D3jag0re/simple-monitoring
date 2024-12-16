@@ -1,7 +1,7 @@
 name: Build, Deploy
 
 # [X] Build droplet 
-# [] Transfer files
+# [X] Transfer files
 # [] Install Netdata
 # [] Customizations
 # [] Alerts
@@ -85,12 +85,22 @@ jobs:
         source: "./scripts"
         target: /temp
 
-    - name: multiple command
+    - name: Install NetData and Stress
       uses: appleboy/ssh-action@v1.2.0
       with:
         host: ${{ needs.build_droplet.outputs.ipv4 }}
         username: root
         key: ${{ secrets.DO_SSH_PRIVATE_KEY }}
         script: |
-          whoami
-          ls -al
+          apt-install stress 
+          bash /temp/scripts/setup.sh 
+          curl http://${{ needs.build_droplet.outputs.ipv4 }}:19999
+
+    - name: Run Stress
+      uses: appleboy/ssh-action@v1.2.0
+      with:
+        host: ${{ needs.build_droplet.outputs.ipv4 }}
+        username: root
+        key: ${{ secrets.DO_SSH_PRIVATE_KEY }}
+        script: |
+          stress --cpu 2 --timeout 60
