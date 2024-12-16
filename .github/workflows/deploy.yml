@@ -87,5 +87,5 @@ jobs:
 
     - name: Execute Commands on VM
       run: | 
-        ssh -i ${{ secrets.DO_SSH_PUBLIC_KEY }}" root@${{ needs.build_droplet.outputs.ipv4 }}
+        ssh -i "${{ secrets.DO_SSH_PUBLIC_KEY }}" root@${{ needs.build_droplet.outputs.ipv4 }}
         ls /tmp/scripts
