@@ -1,6 +1,6 @@
 name: Build, Deploy
 
-# [] Build droplet 
+# [X] Build droplet 
 # [] Transfer files
 # [] Install Netdata
 # [] Customizations
@@ -66,3 +66,21 @@ jobs:
         echo "Droplet ID: $id"
         echo "Droplet Name: $name"
         echo "Droplet IP: $ipv4"
+
+
+ copy_install_run:
+   runs-on: ubuntu-latest
+   needs: build_droplet
+
+   steps: 
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Copy Files to VM
+      run: |
+        scp -o StrictHostKeyChecking=no -i ${{ secrets.DO_SSH_PUBLIC_KEY }} -r ./scripts root@${{ needs.build_droplet.outputs.ipv4 }}:/tmp   
+
+    - name: Execute Commands on VM
+      run: | 
+        ssh -i ${{ secrets.DO_SSH_PUBLIC_KEY }}" root@${{ needs.build_droplet.outputs.ipv4 }}
+        ls /tmp/scripts
