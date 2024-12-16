@@ -92,9 +92,8 @@ jobs:
         username: root
         key: ${{ secrets.DO_SSH_PRIVATE_KEY }}
         script: |
-          apt-install stress 
+          apt install stress 
           bash /temp/scripts/setup.sh 
-          curl http://${{ needs.build_droplet.outputs.ipv4 }}:19999
 
     - name: Run Stress
       uses: appleboy/ssh-action@v1.2.0
