@@ -85,7 +85,12 @@ jobs:
         source: "./scripts"
         target: /temp
 
-    - name: Execute Commands on VM
-      run: | 
-        ssh -i "${{ secrets.DO_SSH_PUBLIC_KEY }}" root@${{ needs.build_droplet.outputs.ipv4 }}
-        ls /tmp/scripts
+    - name: multiple command
+      uses: appleboy/ssh-action@v1.2.0
+      with:
+        host: ${{ needs.build_droplet.outputs.ipv4 }}
+        username: root
+        key: ${{ secrets.DO_SSH_PRIVATE_KEY }}
+        script: |
+          whoami
+          ls -al
