@@ -6,11 +6,7 @@ Set up a basic monitoring dashboard using [Netdata.](https://www.netdata.cloud/)
 
 This is number 8 of [21 DevOps Projects](https://roadmap.sh/devops/projects) as per roadmap.sh
 
-
-
 ## Description From Site 
-
-
 
 The goal of this project is to learn the basics of monitoring. It is to help you understand how to monitor the health of a system and how to set up a basic monitoring dashboard.
 
@@ -52,9 +48,6 @@ Once you have finished this project, you will have a basic understanding of how 
 - Alerts (cpu) can be modified by going to `/opt/netdata/etc/netdata/` and then `sudo ./edit-config health.d/cpu.conf`
     - See example in `./scripts/cpu80.txt`
     - `sudo systemctl restart netdata`
-
-
-
 
 ## Notes 
 
