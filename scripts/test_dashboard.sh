@@ -4,7 +4,8 @@
     # Increase --cpu to match the number of CPU cores you want to load fully
     # Increase --vm and --vm-bytes to allocate more memory
     
-stress --cpu 2 --io 4 --vm 2 --vm-bytes 1G --timeout 60s
+stress --cpu 1 --vm 1 --vm-bytes 256M --io 1 --timeout 60s
+
 
 # Test disk write throughput 
 

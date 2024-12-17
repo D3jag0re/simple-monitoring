@@ -1,0 +1,18 @@
+# this sets an alert for cpu > 80%
+# Copy this to the end of cpu.conf 
+
+# Custom 
+   template: cpu_usage_80_percent
+         on: system.cpu
+      class: Utilization
+       type: System
+  component: CPU
+host labels: _os=linux
+     lookup: average -1m unaligned of user,system,softirq,irq,guest
+      units: %
+      every: 10s
+       crit: $this > 80
+      delay: up 10s down 30s multiplier 1.2 max 2m
+    summary: High CPU utilization detected
+       info: Average CPU utilization exceeds 80% over the last 1 minute
+         to: sysadmin

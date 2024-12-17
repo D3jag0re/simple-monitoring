@@ -85,11 +85,11 @@ jobs:
         username: root
         key: ${{ secrets.DO_SSH_PRIVATE_KEY }}
         script: |
-          echo "installing stress.........................................."
+          echo "installing stress.............................................................."
           apt install stress 
-          echo "installing fio............................................."
+          echo "installing fio................................................................."
           apt install fio -y
-          echo "installing netdata........................................."
+          echo "installing netdata............................................................."
           bash /temp/scripts/setup.sh 
 
     - name: Run Stress
