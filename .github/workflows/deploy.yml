@@ -85,7 +85,7 @@ jobs:
         source: "./scripts"
         target: /temp
 
-    - name: Install NetData and Stress
+    - name: Install NetData, Stress, and fio
       uses: appleboy/ssh-action@v1.2.0
       with:
         host: ${{ needs.build_droplet.outputs.ipv4 }}
@@ -93,6 +93,7 @@ jobs:
         key: ${{ secrets.DO_SSH_PRIVATE_KEY }}
         script: |
           apt install stress 
+          apt install fio -y
           bash /temp/scripts/setup.sh 
 
     - name: Run Stress

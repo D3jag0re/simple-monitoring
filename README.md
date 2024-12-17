@@ -41,6 +41,7 @@ Once you have finished this project, you will have a basic understanding of how 
 - Going to use terraform to build droplet 
 - Going to use GitHub Actions to do all the initial setup
 - Can then SSH in from there to run trigger or customize etc. 
+- Cron job to run stress and i/o tests ? 
 
 ## Lessons Learned
 
